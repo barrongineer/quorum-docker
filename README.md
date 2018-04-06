@@ -1,3 +1,6 @@
+### Description
+Dockerized version of jpmorgan quorum-examples vagrant box
+
 ### Versions
 * quorum v2.0.1
 * constellation v0.3.2
