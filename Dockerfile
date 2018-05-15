@@ -40,4 +40,11 @@ RUN mv porosity /usr/local/bin && chmod 0755 /usr/local/bin/porosity
 WORKDIR /
 RUN git clone https://github.com/jpmorganchase/quorum-examples
 
+# create non-root user
+RUN groupadd -g 1000 quorumgroup
+RUN useradd -u 161711 quorum
+RUN chown -R quorum:quorumgroup /quorum /quorum-examples
+RUN chmod -R 755 /quorum /quorum-examples
+USER quorum
+
 EXPOSE 22000
