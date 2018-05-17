@@ -36,9 +36,10 @@ WORKDIR /
 RUN wget -q https://github.com/jpmorganchase/quorum/releases/download/v1.2.0/porosity
 RUN mv porosity /usr/local/bin && chmod 0755 /usr/local/bin/porosity
 
-# bring in quorum-examples
+# bring in quorum-examples and enable cors for web3js users
 WORKDIR /
 RUN git clone https://github.com/jpmorganchase/quorum-examples
+RUN sed -i -e 's/geth --datadir/geth --rpccorsdomain "*" --datadir/g' quorum-examples/examples/7nodes/raft-init.sh
 
 # create non-root user
 RUN groupadd -g 1000 quorumgroup
